@@ -107,6 +107,36 @@ font-size: 0;
 	font-weight: 700;
 }
 
+#resetButton {
+  cursor: pointer;
+  background-color: #F15B31;
+  color: white;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 16px;
+  padding: 10px 15px;
+  margin: 20px;
+  border-radius: 4px;
+  }
+
+  #newGameButton {
+  cursor: pointer;
+  background-color: #00D0CB;
+  color: white;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 16px;
+  padding: 10px 22px;
+  margin: 20px;
+  border-radius: 4px;
+  }
+
+#scoreKeeper{
+	border: 2px solid rgba(0,0,0,.5);
+	padding: 10px;
+	margin: 0;
+	display: inline-block;
+}
 
 
 
