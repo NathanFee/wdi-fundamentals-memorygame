@@ -1,7 +1,4 @@
 
-var countWins = 0;
-var countLoses = 0;
-
 var cards = [
 {
 	rank: "queen",
@@ -27,12 +24,6 @@ var cards = [
 
 var cardsInPlay =[];
 
-var printScore = function()
-{
-	document.getElementById('scoreKeeper').textContent = "Wins: " + countWins + " Loses: " + countLoses;
-	console.log("Wins: " + countWins + " Loses: " + countLoses);
-}
-
 var checkForMatch = function()
 {
 
@@ -40,18 +31,14 @@ var checkForMatch = function()
 	{
 		if (cardsInPlay[0] === cardsInPlay[1])
 		{
-			//setTimeout(function() {alert("You found a match!.");}, 200);
-			document.getElementById('alertResult').textContent = winResponse();
-			countWins++;
-			printScore();
+			//delay alert until after card flips
+			setTimeout(function() {alert("You found a match!.");}, 100);
 
 		}
 		else
 		{
-			//setTimeout(function() {alert("Sorry, try again.");}, 200);
-			document.getElementById('alertResult').textContent = "Sorry, Try Agiain.";
-			countLoses++;
-			printScore();
+			//delay alert until after card flips
+			setTimeout(function() {alert("Sorry, try again.");}, 100);
 		}
 	}
 } // End checkForMatch()
@@ -88,60 +75,6 @@ var createBoard = function()
 } // End createBoard()
 
 
-var winResponse = function()
-{
-var responseIndex = Math.floor(Math.random()* 4);
-
-switch (responseIndex){
-	case 0:
-		return "Congratulations! You found a match!";
-		break;
-	case 1:
-		return "Awesome! A match has been found! ";
-		break;
-	case 2:
-		return "YAY! A Match!";
-		break;
-	case 3:
-		return  "#Winning";
-		break;
-	default:
-		return  "#NotWinning";
-	}
-
-}// End winResponse()
-
-
-/*
-	The following shuffle function is known as the Fisher-Yates (aka Knuth) Shuffle.
-	Code Source: 
-	https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
-*/
-
-var shuffle = function (array) 
-{
-  var currentIndex = array.length, temporaryValue, randomIndex;
-
-  // While there remain elements to shuffle...
-  while (0 !== currentIndex) 
-  {
-
-    // Pick a remaining element...
-    randomIndex = Math.floor(Math.random() * currentIndex);
-    currentIndex -= 1;
-
-    // And swap it with the current element.
-    temporaryValue = array[currentIndex];
-    array[currentIndex] = array[randomIndex];
-    array[randomIndex] = temporaryValue;
-  }
-
-  return array;
-
-}// End Shuffle()
-
-
-
 var resetBoard = function(){
 console.log("Reset Button Clicked");
 	
@@ -151,32 +84,16 @@ var boardNode = document.getElementById('game-board');
 		boardNode.removeChild(boardNode.firstChild);
 	}
 	cardsInPlay = [];
-	cards = shuffle(cards);
 	createBoard();
 
 }// End resetBoard()
 
-var newGame = function ()
-{
-	countWins = 0;
-	countLoses = 0;
-	printScore();
-	resetBoard();
 
-}// End newGame()
-
-//Button Listeners
-document.getElementById('resetButton').addEventListener('click', resetBoard);
-document.getElementById('newGameButton').addEventListener('click', newGame);
-
-//Starting Setup
-cards = shuffle(cards);
 createBoard();
 
 
-
-
-
+//Reset Button event listener
+document.getElementById('resetButton').addEventListener('click', resetBoard);
 
 
 
